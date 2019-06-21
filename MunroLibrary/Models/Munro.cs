@@ -9,6 +9,7 @@ namespace MunroLibrary.Models
     {
         public enum CategoryType
         {
+            NONE = 0,
             MUN,
             TOP
         }
@@ -32,7 +33,16 @@ namespace MunroLibrary.Models
         {
             var categoryValue = values[columnsMap.Where(x => x.Value.PropertyName == nameof(HillCategory)).FirstOrDefault().Key];
             if (Enum.TryParse(categoryValue, out CategoryType categoryType))
-                HillCategory = categoryType;
+            {
+                if (categoryType != CategoryType.NONE)
+                {
+                    HillCategory = categoryType;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid value for the category of the munro", nameof(HillCategory));
+                }
+            }
             else
             {
                 throw new ArgumentException("Invalid value for the category of the munro", nameof(HillCategory));
@@ -42,7 +52,9 @@ namespace MunroLibrary.Models
             if (decimal.TryParse(heightString, out decimal height))
             {
                 if (height <= 0)
+                {
                     throw new ArgumentException("The height of the munro can't be negative or zero", nameof(Height));
+                }
                 Height = height;
             }
             else
