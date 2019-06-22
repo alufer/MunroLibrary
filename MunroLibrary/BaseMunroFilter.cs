@@ -6,9 +6,14 @@ using System.Text;
 
 namespace MunroLibrary
 {
-    public class BaseMunroFilter : IMunroFilter
+    public abstract class BaseMunroFilter : IMunroFilter
     {
+        #region Properties
         public List<Munro> Munros { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public BaseMunroFilter()
         {
@@ -25,14 +30,20 @@ namespace MunroLibrary
             Munros = filter.GetResults();
         }
 
+        #endregion
+
         public virtual List<Munro> GetResults()
         {
             return Munros;
         }
 
+        #region Helpers
+
         protected bool IsListMunrosEmpty()
         {
-            return Munros?.Count > 0;
+            return Munros?.Count == 0;
         }
+
+        #endregion
     }
 }

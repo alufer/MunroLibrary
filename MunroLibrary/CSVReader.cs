@@ -9,10 +9,19 @@ using MunroLibrary.Models;
 
 namespace MunroLibrary
 {
+    /// <summary>
+    /// Class for reading CSV files and obtain a list of values
+    /// </summary>
     public class CSVReader
     {
+        #region Properties
+
         private Dictionary<int, ColumnToPropertyPair> _columnsMap;
         public List<ColumnToPropertyPair> ColumnToPropertyMap { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         /// Create a CSVReader object containing the specified mapping or the default one
@@ -36,6 +45,8 @@ namespace MunroLibrary
                 ColumnToPropertyMap = new List<ColumnToPropertyPair>(map);
             }
         }
+
+        #endregion
 
         /// <summary>
         /// Read a CSV file with a first line as header extracting only the values based on the mapping and create a corresponding list of <see cref="Munro"/>
@@ -78,11 +89,13 @@ namespace MunroLibrary
             {
                 Console.WriteLine("Error in reading CSV file at path: " + filePath);
                 Console.WriteLine(e.Message);
-                throw e;
+                throw e.InnerException;
             }
 
             return results;
         }
+
+        #region Helpers
 
         /// <summary>
         /// Create a <see cref="Munro"/> object parsing one line of the CSV file
@@ -135,5 +148,7 @@ namespace MunroLibrary
 
             return results;
         }
+
+        #endregion
     }
 }
