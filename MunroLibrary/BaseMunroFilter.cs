@@ -41,6 +41,8 @@ namespace MunroLibrary
 
         protected bool IsListMunrosEmpty()
         {
+            if (Munros == null)
+                return true;
             return Munros?.Count == 0;
         }
 
