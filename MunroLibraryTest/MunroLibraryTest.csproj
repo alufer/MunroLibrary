@@ -59,6 +59,8 @@
     <Compile Include="CSVReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MunroTest.cs" />
+    <Compile Include="HillCategoryFilterTest.cs" />
+    <Compile Include="MunroSearcherTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
