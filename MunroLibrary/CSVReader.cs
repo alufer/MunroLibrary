@@ -89,7 +89,7 @@ namespace MunroLibrary
             {
                 Console.WriteLine("Error in reading CSV file at path: " + filePath);
                 Console.WriteLine(e.Message);
-                throw e.InnerException;
+                throw e;
             }
 
             return results;
