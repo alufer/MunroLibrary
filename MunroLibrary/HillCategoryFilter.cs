@@ -12,10 +12,16 @@ namespace MunroLibrary
     /// </summary>
     public class HillCategoryFilter : BaseMunroFilter
     {
+        #region Properties
+
         /// <summary>
         /// Category of the hill( default value <see cref="Munro.CategoryType.NONE"/>)
         /// </summary>
         public Munro.CategoryType HillCategory { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         /// Instantiate the filter with default value for <see cref="HillCategory"/>
@@ -41,6 +47,10 @@ namespace MunroLibrary
             HillCategory = category;
         }
 
+        #endregion
+
+        #region Overrides
+
         /// <summary>
         /// Get the list of <see cref="Munro"/> that matches the hill category <see cref="HillCategory"/>( <see cref="Munro.CategoryType.NONE"/> matches all categories ) from <see cref="BaseMunroFilter.Munros"/>
         /// </summary>
@@ -54,5 +64,6 @@ namespace MunroLibrary
             return Munros.Where(x => x.HillCategory == this.HillCategory).ToList();
         }
 
+        #endregion
     }
 }
