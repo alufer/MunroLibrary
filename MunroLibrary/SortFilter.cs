@@ -43,7 +43,7 @@ namespace MunroLibrary
 
         public override List<Munro> GetResults()
         {
-            if (IsListMunrosEmpty() || SortCriterias?.Count == 0)
+            if (IsListMunrosEmpty() || SortCriterias==null || SortCriterias?.Count == 0)
             {
                 return base.GetResults();
             }
